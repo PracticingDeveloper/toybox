@@ -37,7 +37,7 @@ gameLoop();
 
 function setup() {
    circle.beginFill(0xFF0000);
-   circle.lineStyle(2, 0xFFFFFF);
+   circle.lineStyle(2, 0x000000;
    circle.drawCircle(60, 60, 30);
    
    stage.addChild(circle);
