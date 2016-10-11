@@ -30,22 +30,68 @@ var b = new Bump(PIXI);
 var pointer = t.makePointer();
 
 var space  = keyboard(32);
-var circle = new PIXI.Graphics();
+
+var paintColor = 0xFF0000;
+
+var rectangle;  
 
 setup()
 gameLoop();
 
+function circle(color) {
+  var c = new PIXI.Graphics();
+
+  c.color = color;
+  c.beginFill(color);
+  c.lineStyle(2, 0x000000);
+  c.drawCircle(30, 30, 30);
+  c.circular = true;
+
+  t.makeInteractive(c);
+
+  c.press = function() {
+    paintColor = this.color;
+    updateRectangle();
+  }
+  
+  return c;
+}
+
+function updateRectangle() {
+  rectangle.clear();
+
+  rectangle.beginFill(paintColor);
+  rectangle.lineStyle(2, 0x000000);
+  rectangle.drawRect(0, 0, 300, 300);
+
+  rectangle.position.set(200,30);
+
+}
+
 function setup() {
-   circle.beginFill(0xFF0000);
-   circle.lineStyle(2, 0x000000);
-   circle.drawCircle(60, 60, 30);
-   
-   stage.addChild(circle);
+   rectangle = new PIXI.Graphics();
+
+   updateRectangle();
+
+   var redCircle   = circle(0xFF0000);
+   var greenCircle = circle(0x00FF00);
+   var blueCircle  = circle(0x0000FF);
+
+   redCircle.position.y = 60;
+   redCircle.position.x = 60;
+
+   greenCircle.position.y = 150;
+   greenCircle.position.x = 60;
+
+   blueCircle.position.y = 240;
+   blueCircle.position.x = 60;
+
+   stage.addChild(redCircle);
+   stage.addChild(greenCircle);
+   stage.addChild(blueCircle);
+   stage.addChild(rectangle);
 }
 
-function updateCircle() {
-
-}
 function gameLoop() {
   id = requestAnimationFrame(gameLoop);
   t.update();
