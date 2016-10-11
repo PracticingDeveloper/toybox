@@ -29,12 +29,21 @@ var b = new Bump(PIXI);
 
 var pointer = t.makePointer();
 
-var space = keyboard(32);
+var space  = keyboard(32);
+var circle = new PIXI.Graphics();
 
 setup()
 gameLoop();
 
 function setup() {
+   circle.beginFill(colors[colorIndex]);
+   circle.lineStyle(2, 0xFFFFFF);
+   circle.drawCircle(60, 60, 30);
+   
+   stage.addChild(circle);
+}
+
+function updateCircle() {
 
 }
 
