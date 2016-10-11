@@ -46,26 +46,6 @@ function setup() {
 function updateCircle() {
 
 }
-
-function buildPurifierSupplyChain() {
-  blue_crate   = buildCrate(600,340);
-
-
-
-  var purifier_machine = buildMachine("blue", 400,400);
-  machines.push(purifier_machine);
-
-  var order   = buildOrder(purifier_machine, blue_crate);
-
-  blue_crate.consume = buildConsumer(order);
-  
-  purifier_machine.worker.delay = 3000
-
-  purifier_machine.addSupplyCrate(green_crate);
-
-  _.times(3, function() { order.submit(); });
-}
-
 function gameLoop() {
   id = requestAnimationFrame(gameLoop);
   t.update();
