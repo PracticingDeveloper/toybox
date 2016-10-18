@@ -1,0 +1,32 @@
+<html>
+  <body>
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.2/jsgrid.min.css" />
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.2/jsgrid-theme.min.css" />
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.2/jsgrid.min.js"></script>
+
+    <div id="jsGrid"></div>
+
+    <script>
+        $("#jsGrid").jsGrid({
+            width: "50%",
+     
+            inserting: true,
+            editing: true,
+            sorting: true,
+            paging: true,
+            onItemUpdated: function(args) { console.log(args.item); },
+     
+            fields: [
+                { name: "Shape", type: "select", items: ["Circle", "Square"] },
+                { name: "Color", type: "select", items: ["Red", "Green", "Blue"], width: 100 },
+                { name: "Size", type: "number", width: 100 },
+                { name: "XPos", type: "number", width: 100 },
+                { name: "YPos", type: "number", width: 100 },
+                { type: "control" }
+            ]
+        });
+    </script>
+  </body>
+</html>
